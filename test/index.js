@@ -140,3 +140,54 @@ describe('improv', function () {
   });
 
 });
+
+describe('with filters', function () {
+  const testSet = {
+    line: {
+      groups: [
+        {
+          tags: [],
+          phrases: 'I love my [:pet].'
+        }
+      ]
+    },
+    pet: {
+      groups: [
+        {
+          tags: [['animal', 'dog']],
+          phrases: ['dog']
+        },
+        {
+          tags: [['animal', 'cat']],
+          phrases: ['cat']
+        },
+        {
+          tags: [],
+          phrases: ['pet rock']
+        }
+
+      ]
+    }
+  };
+  describe('with mismatch filter', function () {
+    const expectedValue = 0;
+    const wMismatch = new Improv(testSet, { filters: [Improv.filters.mismatchFilter] });
+
+    before(function () {
+      simple.mock(Math, 'random', () => expectedValue);
+    });
+
+    after(function () {
+      simple.restore();
+    });
+
+    it('allows only values that do not mismatch the model', function () {
+      const model1 = { tags: [['animal', 'dog']] };
+      const model2 = { tags: [['animal', 'cat']] };
+
+      wMismatch.gen('pet', model1).should.equal('dog');
+      wMismatch.gen('pet', model2).should.equal('cat');
+    });
+
+  });
+});
