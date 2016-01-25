@@ -1,4 +1,4 @@
-import 'should';
+import should from 'should';
 import filters from '../lib/filters.js';
 
 describe('filters', function () {
@@ -18,7 +18,7 @@ describe('filters', function () {
           ['economy']
         ]
       };
-      (filters.mismatchFilter(mismatchingGroup, model)).should.be.null();
+      should(filters.mismatchFilter(mismatchingGroup, model)).be.null();
     });
 
     it('returns 0 when there is a complete match', function () {
