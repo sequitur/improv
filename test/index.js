@@ -1,3 +1,5 @@
+/* Main Improv file */
+
 import 'should';
 import Improv from '../lib';
 import simple from 'simple-mock';
