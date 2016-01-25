@@ -1,6 +1,6 @@
 {
   "name": "improv",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "A model-backed generative text grammar tool for javascript",
   "homepage": "",
   "author": {

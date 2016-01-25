@@ -191,4 +191,35 @@ describe('with filters', function () {
     });
 
   });
+
+  describe('with templates', function () {
+
+    const spec = {
+      root: {
+        groups: [
+          {
+            phrases: ['Hi, my name is [name], and I own [#1-20] [:pet]s.']
+          }
+        ]
+      },
+      pet: {
+        groups: [
+          {
+            phrases: ['cat', 'dog', 'parakeet']
+          }
+        ]
+      }
+    };
+
+    const generator = new Improv(spec);
+
+    const model = { name: 'Bob' };
+
+    it('uses the templating engine', function () {
+      generator.gen('root', model).should.match(
+        /Hi, my name is Bob, and I own [0-9]+ (cat|dog|parakeet)s./);
+
+    });
+
+  });
 });
