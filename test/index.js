@@ -48,24 +48,34 @@ describe('improv', function () {
 
   describe('flattenGroups', function () {
 
-    it('flattens a scored list of groups', function () {
+    it('flattens a scored list of groups into a tuple with tags', function () {
       const testList = [
         {
           group: {
-            phrases: ['dog', 'cat', 'pig']
+            tags: [['canine']],
+            phrases: ['dog']
           },
           score: 0
         },
         {
           group: {
-            phrases: ['boar', 'deer', 'puma']
+            tags: [['porcine']],
+            phrases: ['boar']
           },
           score: 0
         }
       ];
 
-      (testImprov.flattenGroups(testList)).should
-        .deepEqual(['dog', 'cat', 'pig', 'boar', 'deer', 'puma']);
+      (testImprov.flattenGroups(testList)).should.eql([
+        [
+          'dog',
+          [['canine']]
+        ],
+        [
+          'boar',
+          [['porcine']]
+        ]
+      ]);
     });
 
   });
@@ -221,5 +231,49 @@ describe('with filters', function () {
 
     });
 
+  });
+
+});
+
+describe('reincorporation', function () {
+
+  const spec = {
+    root: {
+      groups: [
+        {
+          tags: [['test']],
+          phrases: ['test']
+        }
+      ]
+    },
+    tagged: {
+      groups: [
+        {
+          tags: [['foo', 'bar'], ['baz']],
+          phrases: ['test']
+        }
+      ]
+    }
+  };
+
+  const reincorporater = new Improv(spec, { reincorporate: true });
+
+  it('adds used tags back into the model', function () {
+    const model = {
+      tags: []
+    };
+
+    reincorporater.gen('root', model);
+    model.tags.should.eql([['test']]);
+
+  });
+
+  it('merges tags with existing ones', function () {
+    const model = {
+      tags: [['foo']]
+    };
+
+    reincorporater.gen('tagged', model);
+    model.tags.should.eql([['foo', 'bar'], ['baz']]);
   });
 });

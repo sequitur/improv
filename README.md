@@ -146,6 +146,12 @@ const greet = new Improv(spec);
 greet.gen(spec, { name: 'Bob' });
 ```
 
+## Reincorporation
+
+If you create a generator with `{ reincorporate: true }` in its options, that generator will update the model it's working with whenever it runs. What this means is that the tags associated with any phrase that it uses will be merged into the tags of the model.
+
+For instance, suppose you are generating procedurally generating descriptions of clothing; you could have phrases tagged as `['fabric', 'satin']` and so on. You don't have to specify a fabric tag beforehand; once the generator uses one, it will be incorporated to the model. Given the right use of filtering rules, this means Improv can be used to build free-form paragraphs of text that doesn't contradict itself.
+
 ## Caveats and Known Issues
 
 Improv does absolutely no validation or security checking of anything, so for the love of God don't pass user-submitted data into it.
