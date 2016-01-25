@@ -1,8 +1,6 @@
 # Improv
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
-
-**Note**: *Improv is currently unfinished; some features listed in this README are marked as unimplemented.*
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status](https://david-dm.org/sequitur/improv.svg)](https://david-dm.org/sequitur/improv)
 
 A model-backed generative text grammar tool for javascript. Improv is similar to Tracery in that it can generate random, procedurally generated text recursively. Also like Tracery, Improv includes some basic templating functionality.
 
@@ -50,7 +48,7 @@ A snippets object is just a plain JavaScript object. Each property of that objec
 }
 ```
 
-Because snippets are plain data objects, they can be conveniently loaded from JSON files.
+Because snippets are plain data objects, they can be conveniently loaded or assembled from JSON, CSON, or YAML files.
 
 ## Instantiating a Generator
 
@@ -63,11 +61,13 @@ The main option, currently, is `filters`, a list of filters that the generator s
 import Improv from "improv";
 
 const myGenerator = new Improv(snippetObject, {
-  filters: [Improv.filters.mismatchFilter]
+  filters: [Improv.filters.mismatchFilter()]
 });
 
 let text = myGenerator.gen('snippet-name', modelObject);
 ```
+
+Model objects can be anything, but Improv's default filters expect an object with a `tags` property similar to a group in a snippet set.
 
 ## Filters
 
@@ -95,11 +95,11 @@ Improv.filter contains *factories* that return functions; most of these can be c
 
 Returns null if the group and model have a mismatched tag pair, 0 otherwise. This filter is useful for completely removing inappropriate phrases from the pool.
 
-#### partialBonus (bonus = 1, cumulative = true) [unimplemented]
+#### partialBonus (bonus = 1, cumulative = true)
 
 The `partialBonus` filter calculates salience score based on partial matches. If `cumulative` is false, it will return a score offset equal to `bonus`; if it is true, it will multiply that bonus by the number of partial matches. If there are no partial matches, it returns 0.
 
-#### fullBonus (bonus = 1, cumulative = true) [unimplemented]
+#### fullBonus (bonus = 1, cumulative = true)
 
 Behaves identically to the `partialBonus` filter, but counts full matches instead.
 
