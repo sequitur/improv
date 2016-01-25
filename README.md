@@ -139,7 +139,7 @@ const spec = {
   }
 }
 
-greet = new Improv(spec);
+const greet = new Improv(spec);
 
 // Should produce something like:
 // "Hi, my name is Bob and I own 17 cats."
