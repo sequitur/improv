@@ -3,6 +3,7 @@ import filters from '../lib/filters.js';
 
 describe('filters', function () {
   describe('mismatchFilter', function () {
+    const mismatchFilter = filters.mismatchFilter();
     const model = {
       tags: [
         ['government', 'autocracy', 'monarchy', 'absolute'],
@@ -18,11 +19,11 @@ describe('filters', function () {
           ['economy']
         ]
       };
-      should(filters.mismatchFilter(mismatchingGroup, model)).be.null();
+      should(mismatchFilter(mismatchingGroup, model)).be.null();
     });
 
     it('returns 0 when there is a complete match', function () {
-      (filters.mismatchFilter(model, model)).should.equal(0);
+      (mismatchFilter(model, model)).should.equal(0);
     });
 
     it('returns 0 when there is a partial match', function () {
@@ -32,7 +33,7 @@ describe('filters', function () {
           ['decline']
         ]
       };
-      (filters.mismatchFilter(partialMatchingGroup, model)).should.equal(0);
+      (mismatchFilter(partialMatchingGroup, model)).should.equal(0);
     });
   });
 });

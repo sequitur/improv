@@ -171,7 +171,8 @@ describe('with filters', function () {
   };
   describe('with mismatch filter', function () {
     const expectedValue = 0;
-    const wMismatch = new Improv(testSet, { filters: [Improv.filters.mismatchFilter] });
+    const wMismatch = new Improv(testSet,
+      { filters: [Improv.filters.mismatchFilter()] });
 
     before(function () {
       simple.mock(Math, 'random', () => expectedValue);

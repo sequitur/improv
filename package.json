@@ -1,6 +1,6 @@
 {
   "name": "improv",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A model-backed generative text grammar tool for javascript",
   "homepage": "",
   "author": {
@@ -57,8 +57,17 @@
           "allowSingleLine": true
         }
       ],
-      "babel/object-curly-spacing": [2, "always"],
-      "new-cap": [2, {"capIsNew": false, "newIsCap": true}]
+      "babel/object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "new-cap": [
+        2,
+        {
+          "capIsNew": false,
+          "newIsCap": true
+        }
+      ]
     }
   },
   "repository": "sequitur/improv",
@@ -66,5 +75,8 @@
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.0.1"
+  }
 }
