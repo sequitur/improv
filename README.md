@@ -103,6 +103,49 @@ The `partialBonus` filter calculates salience score based on partial matches. If
 
 Behaves identically to the `partialBonus` filter, but counts full matches instead.
 
+## Templating
+
+All text Improv generates (from phrases in groups in snippets) is run through an extremely minimal templating engine. This engine recognises directives delimited by brackets (`[like so]`); directives are simply replaced in place by some other value. The templating engine recurs until it can't find directives in the text any more. Currently, brackets are the only supported delimiters, and they can't be escaped, but this should change eventually.
+
+### Generator directives
+
+Directives starting in `:` are passed back to the generator; this allows nesting snippets, like Tracery. For instance, the phrase `[:animal]` will resolve to the snippet named "animal" in the same generator's collection of snippets.
+
+### Random number directives
+
+Directives starting in `#` are replaced with a random number. `[#1-20]` will produce a random number between 1 and 20, inclusive. A hyphen is the delimiter between the two numbers.
+
+### Plain directives
+
+Directives that don't start with a special character are treated as properties of the model object to be retrieved. `[prop]` will look at the `prop` property of the model that was passed to `Improv#gen()`. This can be used to retrieve nested properties, eg `[nested.prop]`.
+
+### Worked templating example
+
+```js
+const spec = {
+  root: {
+    groups: [
+      {
+        phrases: ['Hi, my name is [name], and I own [#1-20] [:pet]s.']
+      }
+    ]
+  },
+  pet: {
+    groups: [
+      {
+        phrases: ['cat', 'dog', 'parakeet']
+      }
+    ]
+  }
+}
+
+greet = new Improv(spec);
+
+// Should produce something like:
+// "Hi, my name is Bob and I own 17 cats."
+greet.gen(spec, { name: 'Bob' });
+```
+
 ## Caveats and Known Issues
 
 Improv does absolutely no validation or security checking of anything, so for the love of God don't pass user-submitted data into it.
