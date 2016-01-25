@@ -1,8 +1,8 @@
 # Improv
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-**Note**: Improv is currently unfinished; this README currently describes functionality that doesn't exist yet.
+**Note**: *Improv is currently unfinished; some features listed in this README are marked as unimplemented.*
 
 A model-backed generative text grammar tool for javascript. Improv is similar to Tracery in that it can generate random, procedurally generated text recursively. Also like Tracery, Improv includes some basic templating functionality.
 
@@ -95,13 +95,19 @@ Improv.filter contains *factories* that return functions; most of these can be c
 
 Returns null if the group and model have a mismatched tag pair, 0 otherwise. This filter is useful for completely removing inappropriate phrases from the pool.
 
-#### partialBonus (bonus = 1, cumulative = true)
+#### partialBonus (bonus = 1, cumulative = true) [unimplemented]
 
 The `partialBonus` filter calculates salience score based on partial matches. If `cumulative` is false, it will return a score offset equal to `bonus`; if it is true, it will multiply that bonus by the number of partial matches. If there are no partial matches, it returns 0.
 
-#### fullBonus (bonus = 1, cumulative = true)
+#### fullBonus (bonus = 1, cumulative = true) [unimplemented]
 
 Behaves identically to the `partialBonus` filter, but counts full matches instead.
+
+## Caveats and Known Issues
+
+Improv does absolutely no validation or security checking of anything, so for the love of God don't pass user-submitted data into it.
+
+The API can and probably will change in the future as the library evolves.
 
 ## License
 
