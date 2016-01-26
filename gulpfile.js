@@ -84,6 +84,10 @@ gulp.task('json-demo', function () {
     .pipe(gulp.dest('demo_build'));
 });
 
+gulp.task('watch-demo', function () {
+  gulp.watch(['demo/**/*.json'], ['json-demo']);
+});
+
 gulp.task('demo', ['build-demo', 'lib-demo', 'json-demo']);
 gulp.task('prepublish', ['nsp', 'babel']);
 gulp.task('default', ['static', 'test']);
