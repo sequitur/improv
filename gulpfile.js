@@ -64,8 +64,26 @@ gulp.task('babel', ['clean'], function () {
 });
 
 gulp.task('clean', function () {
-  return del('dist');
+  return del(['dist', 'demo_build']);
 });
 
+gulp.task('build-demo', function () {
+  return gulp.src('demo/**/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('demo_build'));
+});
+
+gulp.task('lib-demo', function () {
+  return gulp.src('lib/**/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('demo_build/lib'));
+});
+
+gulp.task('json-demo', function () {
+  return gulp.src('demo/**/*.json')
+    .pipe(gulp.dest('demo_build'));
+});
+
+gulp.task('demo', ['build-demo', 'lib-demo', 'json-demo']);
 gulp.task('prepublish', ['nsp', 'babel']);
 gulp.task('default', ['static', 'test']);

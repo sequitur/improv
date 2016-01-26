@@ -21,6 +21,7 @@
     "del": "^2.0.2",
     "eslint-config-xo-space": "^0.7.0",
     "eslint-plugin-babel": "^3.0.0",
+    "fs-jetpack": "^0.7.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-eslint": "^1.0.0",
@@ -68,7 +69,15 @@
           "newIsCap": true
         }
       ],
-      "prefer-reflect": [2, {"exceptions": ["apply", "call"]}]
+      "prefer-reflect": [
+        2,
+        {
+          "exceptions": [
+            "apply",
+            "call"
+          ]
+        }
+      ]
     }
   },
   "repository": "sequitur/improv",
