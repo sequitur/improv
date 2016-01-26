@@ -71,9 +71,13 @@ Model objects can be anything, but Improv's default filters expect an object wit
 
 ## Filters
 
-Improv comes witht a number of filters previously defined as properties of `Improv.filters`. However, those are just regular functions; you can use your own. A filter is a function that takes a single group (from a snippet) and a model object, and returns either a number, or `null`.
+Improv comes witht a number of filters previously defined as properties of `Improv.filters`. However, those are just regular functions; you can use your own. A filter is a function that takes a single group (from a snippet) and a model object, and returns either a number, `null`, or a tuple.
 
 `null` indicates that the group in question is inappropriate and should be excluded from selection entirely. A number, normally a small positive or negative integer, is treated as a scoring offset. The numeric results from each filter are added up to form a salience score. Improv, when generating text, will use only text from the highest-scoring groups.
+
+If the filter returns an Array, the first element is treated as the normal return value (Number or `null`); the second is treated as a new version of the group that was passed to it. This allows filters to modify groups as they pass through, allowing for fine handling of individual phrases or some other preprocessing step.
+
+Inside a filter function body, `this` is bound to the generator object.
 
 ### Tags
 
@@ -95,13 +99,23 @@ Improv.filter contains *factories* that return functions; most of these can be c
 
 Returns null if the group and model have a mismatched tag pair, 0 otherwise. This filter is useful for completely removing inappropriate phrases from the pool.
 
-#### partialBonus (bonus = 1, cumulative = true)
+#### partialBonus (bonus = 1, cumulative = false)
 
 The `partialBonus` filter calculates salience score based on partial matches. If `cumulative` is false, it will return a score offset equal to `bonus`; if it is true, it will multiply that bonus by the number of partial matches. If there are no partial matches, it returns 0.
 
-#### fullBonus (bonus = 1, cumulative = true)
+#### fullBonus (bonus = 1, cumulative = false)
 
 Behaves identically to the `partialBonus` filter, but counts full matches instead.
+
+#### dryness ()
+
+Dry as in "don't repeat yourself". Dryness excludes any phrases that are found within the generator's history, making it so phrases are not repeated.
+
+> Tip: You can compose generators with different rules together; the easiest way to do this is to pass generator `a` a model with a getter that returns the result of calling generator `b`. In ES6, you can also do a variety of Stupid Model Tricks using proxies.
+
+#### unmentioned (bonus = 1)
+
+Adds `bonus` to the salience score of any group tagged with a tag that hasn't been used yet. The main use of this is to produce text that has the appearance of generating a well-rounded description of something, trying to cover different aspects of the subject.
 
 ## Templating
 

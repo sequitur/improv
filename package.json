@@ -67,7 +67,8 @@
           "capIsNew": false,
           "newIsCap": true
         }
-      ]
+      ],
+      "prefer-reflect": [2, {"exceptions": ["apply", "call"]}]
     }
   },
   "repository": "sequitur/improv",

@@ -53,14 +53,14 @@ describe('improv', function () {
         {
           group: {
             tags: [['canine']],
-            phrases: ['dog']
+            phrases: ['dog', 'wolf']
           },
           score: 0
         },
         {
           group: {
             tags: [['porcine']],
-            phrases: ['boar']
+            phrases: ['boar', 'pig']
           },
           score: 0
         }
@@ -72,7 +72,15 @@ describe('improv', function () {
           [['canine']]
         ],
         [
+          'wolf',
+          [['canine']]
+        ],
+        [
           'boar',
+          [['porcine']]
+        ],
+        [
+          'pig',
           [['porcine']]
         ]
       ]);
@@ -275,5 +283,214 @@ describe('reincorporation', function () {
 
     reincorporater.gen('tagged', model);
     model.tags.should.eql([['foo', 'bar'], ['baz']]);
+  });
+});
+
+describe('salience filtering', function () {
+
+  before(function () {
+    simple.mock(Math, 'random', () => 0.9);
+  });
+
+  after(function () {
+    simple.restore();
+  });
+
+  it('selects the best fitted phrase', function () {
+    const spec = {
+      root: {
+        groups: [
+          {
+            tags: [['test']],
+            phrases: ['foo']
+          },
+          {
+            tags: [['yo']],
+            phrases: ['bar']
+          }
+        ]
+      }
+    };
+
+    const model = {
+      tags: [['test']]
+    };
+
+    const fitted = new Improv(spec, {
+      filters: [Improv.filters.fullBonus()] });
+
+    fitted.gen('root', model).should.equal('foo');
+
+  });
+});
+
+describe('filtering API', function () {
+  it('gives filters access to model, a group, and the generator', function () {
+    let results;
+    const myFilter = function (group, model) {
+      results = { group, model, thisObj: this };
+      return 0;
+    };
+
+    const group = {
+      tags: [],
+      phrases: ['test']
+    };
+
+    const spec = {
+      root: {
+        groups: [group]
+      }
+    };
+
+    const model = { tags: ['test'] };
+
+    const customFilter = new Improv(spec, {
+      filters: [myFilter]
+    });
+
+    customFilter.gen('root', model);
+
+    results.group.should.equal(group);
+    results.model.should.equal(model);
+    results.thisObj.should.equal(customFilter);
+  });
+});
+
+describe('history and DRYness', function () {
+  const spec = {
+    first: {
+      groups: [
+        {
+          tags: [['one']],
+          phrases: ['one']
+        }
+      ]
+    },
+    second: {
+      groups: [
+        {
+          tags: [['two'], ['three']],
+          phrases: ['two']
+        }
+      ]
+    },
+    third: {
+      groups: [
+        {
+          tags: [],
+          phrases: ['one', 'two', 'three']
+        }
+      ]
+    },
+    fourth: {
+      groups: [
+        {
+          tags: ['one'],
+          phrases: ['one']
+        },
+        {
+          tags: ['two'],
+          phrases: ['two']
+        }
+      ]
+    },
+    fifth: {
+      groups: [
+        {
+          tags: [],
+          phrases: ['[:fourth][:fourth][:fourth]']
+        }
+      ]
+    }
+  };
+
+  let g;
+
+  beforeEach(function () {
+    g = new Improv(spec);
+  });
+
+  it('records a history of generated phrases', function () {
+    g.gen('first'); g.gen('second'); g.gen('first'); g.gen('first');
+    g.history.should.eql(['one', 'one', 'two', 'one']);
+  });
+
+  it('records a history of used tags', function () {
+    g.gen('first'); g.gen('first'); g.gen('second');
+    g.tagHistory.should.eql([['two'], ['three'], ['one'], ['one']]);
+  });
+
+  it('allows history to be cleared', function () {
+    g.gen('second'); g.gen('first');
+    g.history.should.eql(['one', 'two']);
+    g.tagHistory.should.eql([['one'], ['two'], ['three']]);
+    g.clearHistory(); g.clearTagHistory();
+    g.history.should.eql([]);
+    g.tagHistory.should.eql([]);
+  });
+
+  it('allows persistence to be disabled', function () {
+    const h = new Improv(spec, { persistence: false });
+    h.gen('first');
+    h.history.should.eql([]);
+    h.tagHistory.should.eql([]);
+  });
+
+  describe('dryness filter', function () {
+    before(function () {
+      simple.mock(Math, 'random', () => 0);
+    });
+    after(function () {
+      simple.restore();
+    });
+
+    const i = new Improv(spec, {
+      filters: [Improv.filters.dryness()]
+    });
+
+    it('doesn\'t repeat itself', function () {
+      i.gen('third').should.equal('one');
+      i.gen('third').should.equal('two');
+      i.gen('third').should.equal('three');
+    });
+  });
+
+  describe('unmentioned filter', function () {
+    before(function () {
+      simple.mock(Math, 'random', () => 0);
+    });
+    after(function () {
+      simple.restore();
+    });
+
+    const j = new Improv(spec, {
+      filters: [Improv.filters.unmentioned()]
+    });
+
+    it('increases the rank of unused tags', function () {
+      j.gen('fourth').should.equal('one');
+      j.gen('fourth').should.equal('two');
+      j.gen('fourth').should.equal('one');
+    });
+  });
+
+  describe('momentary persistence', function () {
+    before(function () {
+      simple.mock(Math, 'random', () => 0);
+    });
+    after(function () {
+      simple.restore();
+    });
+
+    const i = new Improv(spec, {
+      filters: [Improv.filters.unmentioned()],
+      persistence: false
+    });
+
+    it('retains history for the duration of one gen', function () {
+      i.gen('fifth').should.equal('onetwoone').and.equal(i.gen('fifth'));
+      i.tagHistory.should.eql([]);
+    });
   });
 });
