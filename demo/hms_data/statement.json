@@ -154,6 +154,81 @@
         "Though her structure is in [:wood], her hull is surrounded in greenish copper cladding.",
         "Numerous sailors have carved notches into her deck railing, denoting enemy vessels sunk in battle."
       ]
+    },
+    {
+      "tags": [
+        ["class", "light", "frigate"]
+      ],
+      "phrases": [
+        "Frigates like the [name] are commonly used to harass enemy shipping.",
+        "The [name], like other frigates, is one of the smaller combat warships in the fleet."
+      ]
+    },
+    {
+      "tags": [
+        ["class", "light", "corvette"]
+      ],
+      "phrases": [
+        "A corvette like the [name] is primarily concerned with minor engagements."
+      ]
+    },
+    {
+      "tags": [
+        ["class", "submarine"],
+        ["crew"]
+      ],
+      "phrases": [
+        "Submarines like the [name] are often crewed by small, wiry men who do well in tight spaces."
+      ]
+    },
+    {
+      "tags": [
+        ["class", "submarine"],
+        ["history"]
+      ],
+      "phrases": [
+        "The submarine, a recent invention, has revolutionised naval combat."
+      ]
+    },
+    {
+      "tags": [
+        ["propulsion", "sail"],
+        ["history"]
+      ],
+      "phrases": [
+        "Sailing vessels like the [name] were common, up until companies like Voulger Dynamics began bringing oil and voltaic engines to seafaring ships."
+      ]
+    },
+    {
+      "tags": [
+        ["era", "new"],
+        ["history"],
+        ["status", "warship"]
+      ],
+      "phrases": [
+        "The [name] is one of the new generation of vessels built to fight against the Arkodian fleet in the Short War.",
+        "The [name] incorporates technologies developed to counteract Arkodian naval power."
+      ]
+    },
+    {
+      "tags": [
+        ["armament"],
+        ["role", "combat"],
+        ["era", "new"]
+      ],
+      "phrases": [
+        "She is fitted with [:guns]."
+      ]
+    },
+    {
+      "tags": [
+        ["armament"],
+        ["role", "combat"],
+        ["era", "old"]
+      ],
+      "phrases": [
+        "In her day, the [name] carried [#12-46] guns to a broadside, plus mortars and swivels."
+      ]
     }
   ]
 }

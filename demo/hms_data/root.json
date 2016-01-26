@@ -1,6 +1,6 @@
 {
   "name": "root",
   "phrases": [
-    "The [:prefix] [:name] is a [:class] commissioned [:when].\n\n[:graph]"
+    "The [:prefix] [name] is a [:class] commissioned [:when].\n\n[gengraph]"
   ]
 }

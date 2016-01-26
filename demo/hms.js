@@ -26,7 +26,7 @@ function loadSpec () {
 const shipMate = new Improv(loadSpec(), {
   filters: [
     Improv.filters.mismatchFilter(),
-    Improv.filters.unmentioned(2),
+    Improv.filters.unmentioned(1),
     Improv.filters.partialBonus(),
     Improv.filters.fullBonus(),
     Improv.filters.dryness()
@@ -36,7 +36,19 @@ const shipMate = new Improv(loadSpec(), {
 });
 
 const newModel = function () {
-  return { tags: [] };
+  const model = {
+    get gengraph () {
+      /*
+        A hack that means the initial intro sentence doesn't count as
+        "mentioning" a tag.
+      */
+      shipMate.clearTagHistory();
+      return '[:graph]';
+    },
+    tags: []
+  };
+  model.name = shipMate.gen('name', model);
+  return model;
 };
 
 const output = function () {

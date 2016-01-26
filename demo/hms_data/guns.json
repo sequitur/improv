@@ -1,0 +1,39 @@
+{
+  "name": "guns",
+  "groups": [
+    {
+      "tags": [["class", "heavy"]],
+      "phrases": [
+        "magnetodynamic howitzers",
+        "oil-drum mortars",
+        "a prow-to-stern siege portbuster",
+        "70mm gatlings"
+      ]
+    },
+    {
+      "tags": [["class", "light"]],
+      "phrases": [
+        "boarding razorwire",
+        "shrapnel launchers",
+        "small-bore cannons",
+        "oil-drum depth charges"
+      ]
+    },
+    {
+      "tags": [["class", "submarine"]],
+      "phrases": [
+        "surface cannon",
+        "siege torpedos",
+        "\"battleship buster\" torpedos",
+        "a hullcutter ram saw"
+      ]
+    },
+    {
+      "tags": [["propulsion", "engine", "elecctric"]],
+      "phrases": [
+        "a voltaic thump device",
+        "anti-personnel lightning arc generators"
+      ]
+    }
+  ]
+}
