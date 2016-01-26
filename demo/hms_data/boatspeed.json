@@ -1,0 +1,12 @@
+{
+  "name": "boatspeed",
+  "groups": [
+    {
+      "tags": [["speed", "fast"]],
+      "phrases": [
+        "[#30-35]",
+        "[#28-32]"
+      ]
+    }
+  ]
+}

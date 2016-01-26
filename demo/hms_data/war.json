@@ -1,0 +1,13 @@
+{
+  "name": "war",
+  "groups": [
+    {
+      "tags": [["era", "new"]],
+      "phrases": ["Short War"]
+    },
+    {
+      "tags": [["era", "old"]],
+      "phrases": ["Long War"]
+    }
+  ]
+}

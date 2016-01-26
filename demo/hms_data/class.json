@@ -1,0 +1,58 @@
+{
+  "name": "class",
+  "groups": [
+    {
+      "tags": [
+        ["class", "light", "corvette"],
+        ["speed", "fast"],
+        ["status", "warship"]
+      ],
+      "phrases": ["corvette"]
+    },
+    {
+      "tags": [
+        ["class", "light", "frigate"],
+        ["status", "warship"]
+      ],
+      "phrases": ["frigate"]
+    },
+    {
+      "tags": [
+        ["class", "heavy", "cruiser"],
+        ["status", "warship"]
+      ],
+      "phrases": ["cruiser"]
+    },
+    {
+      "tags": [
+        ["class", "heavy", "battleship"],
+        ["status", "warship"]
+      ],
+      "phrases": ["battleship"]
+    },
+    {
+      "tags": [
+        ["class", "submarine"],
+        ["era", "new"],
+        ["propulsion", "engine"],
+        ["status", "warship"]
+      ],
+      "phrases": ["submarine"]
+    },
+    {
+      "tags": [
+        ["class", "freight", "galleon"],
+        ["propulsion", "sail"],
+        ["role", "transport"]
+      ],
+      "phrases": ["galleon"]
+    },
+    {
+      "tags": [
+        ["class", "freight", "freighter"],
+        ["role", "transport"]
+      ],
+      "phrases": ["clipper", "freighter"]
+    }
+  ]
+}

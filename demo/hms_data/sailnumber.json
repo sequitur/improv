@@ -1,0 +1,17 @@
+{
+  "name": "sailnumber",
+  "groups": [
+    {
+      "tags": [["class", "heavy"]],
+      "phrases": ["[#8-16]"]
+    },
+    {
+      "tags": [["class", "light"]],
+      "phrases": ["[#6-12]"]
+    },
+    {
+      "tags": [["class", "freight"]],
+      "phrases": ["[#7-13]"]
+    }
+  ]
+}

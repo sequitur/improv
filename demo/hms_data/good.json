@@ -1,0 +1,28 @@
+{
+  "name": "good",
+  "groups": [
+    {
+      "tags": [
+        ["route", "argyria"]
+      ],
+      "phrases": [
+        "silver",
+        "emeralds",
+        "ice spices",
+        "whale oil",
+        "voltaic jars"
+      ]
+    },
+    {
+      "tags": [
+        ["route", "tetotl"]
+      ],
+      "phrases":[
+        "fruit",
+        "sugar",
+        "cotton",
+        "rubber"
+      ]
+    }
+  ]
+}

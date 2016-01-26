@@ -1,0 +1,159 @@
+{
+  "name": "statement",
+  "groups": [
+    {
+      "note": "Generic statements",
+      "tags": [],
+      "phrases": [
+        "She is considered by many to be a fine vessel, though her Captain less so.",
+        "She makes infrequent appearances at the Capital's own port, preferring other waters.",
+        "She is fairly graceful, for a ship of her class.",
+        "She appeared at the last season's naval festival."
+      ]
+    },
+    {
+      "tags": [
+        ["propulsion", "engine", "electric"],
+        ["era", "new"]
+      ],
+      "phrases": [
+        "Her propulsion system is a novel one, running on electricity.",
+        "She is fitted with port and stern battery banks, for greater reach.",
+        "Her voltaic engines propel her through [:impeller]."
+      ]
+    },
+    {
+      "tags": [
+        ["propulsion", "sail"],
+        ["era", "old"]
+      ],
+      "phrases": [
+        "Her mainmast was carved out of [:wood].",
+        "She is fitted with [:sailnumber] sails."
+      ]
+    },
+    {
+      "tags": [
+        ["status", "warship"],
+        ["role", "combat"],
+        ["battle"]
+      ],
+      "phrases": [
+        "During the [:battle], she [:battleaction]."
+      ]
+    },
+    {
+      "tags": [
+        ["status", "warship"],
+        ["role", "transport"]
+      ],
+      "phrases": [
+        "She is currently serving as a colonial troop transport."
+      ]
+    },
+    {
+      "tags": [
+        ["propulsion", "engine", "combustion"],
+        ["era", "new"]
+      ],
+      "phrases": [
+        "Using a whale oil engine, she can reach speeds upwards of [:boatspeed] knots.",
+        "Her powerful oil-boiler engines operate [:impeller]."
+      ]
+    },
+    {
+      "tags": [["class", "battleship"]],
+      "phrases": ["She served as the flagship of the Second Fleet during the [:battle]."]
+    },
+    {
+      "tags": [
+        ["propulsion", "engine"],
+        ["era", "new"],
+        ["class", "light"]
+      ],
+      "phrases": [
+        "The Admiralty commissioned her novel design from Gloryx Voulger, and she eventually became the template for the [:name] class.",
+        "Though originally built as a prototype, she is currently in service."
+      ]
+    },
+    {
+      "tags": [
+        ["era", "old"]
+      ],
+      "phrases": [
+        "Next year, she is due to be decommissioned.",
+        "A consortium of history enthusiasts has agreed to purchase her for a naval museum in Argyria."
+      ]
+    },
+    {
+      "tags": [
+        ["class", "freight"],
+        ["role", "transport"],
+        ["status", "civilian"],
+        ["route"]
+      ],
+      "phrases": [
+        "Customarily, she arrives on port laden with [:good] from [:locale]."
+      ]
+    },
+    {
+      "tags": [
+        ["crew", "bad"]
+      ],
+      "phrases": [
+        "Her crew has a history of breaking in combat.",
+        "Her crew is a raucous and drunken lot, known for disgracing themselves on leave."
+      ]
+    },
+    {
+      "tags": [
+        ["crew", "good"],
+        ["status", "warship"]
+      ],
+      "phrases": [
+        "The crew contains veterans of both the Long and Short wars.",
+        "Her crew is known to be one of the more disciplined in the Navy."
+      ]
+    },
+    {
+      "tags": [
+        ["style"]
+      ],
+      "phrases": [
+        "She is built in the Argyrian style, with her stern low to the water.",
+        "She has graceful fluted sides.",
+        "A figurehead in the shape of [:figurehead] stands at her bow.",
+        "Her bowline is painted an unusual shade of yellow."
+      ]
+    },
+    {
+      "tags": [
+        ["role", "combat"]
+      ],
+      "phrases": [
+        "She bears the scars of numerous engagements during the [:war]."
+      ]
+    },
+    {
+      "tags": [
+        ["route", "argyria"],
+        ["role", "transport"],
+        ["style"]
+      ],
+      "phrases": [
+        "She has an icebreaker prow, for navigating the frigid waters of the frozen South."
+      ]
+    },
+    {
+      "tags": [
+        ["era", "old"],
+        ["role", "combat"],
+        ["style"]
+      ],
+      "phrases": [
+        "Though her structure is in [:wood], her hull is surrounded in greenish copper cladding.",
+        "Numerous sailors have carved notches into her deck railing, denoting enemy vessels sunk in battle."
+      ]
+    }
+  ]
+}

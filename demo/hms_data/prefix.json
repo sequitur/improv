@@ -1,0 +1,13 @@
+{
+  "name": "prefix",
+  "groups": [
+    {
+      "tags": [["status", "warship"]],
+      "phrases": ["HMS"]
+    },
+    {
+      "tags": [["status", "civilian"]],
+      "phrases": ["SS"]
+    }
+  ]
+}

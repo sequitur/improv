@@ -1,0 +1,22 @@
+{
+  "name": "battle",
+  "groups": [
+    {
+      "tags": [["era", "old"]],
+      "phrases": [
+        "Battle of Henninger Gap",
+        "Battle of Fellport",
+        "Battle of the Four Navies",
+        "Battle of Ingestadt"
+      ]
+    },
+    {
+      "tags": [["era", "new"]],
+      "phrases": [
+        "Battle of New Carcosa",
+        "Battle of Argyrian Straits",
+        "Battle of Leufport"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "battleaction",
+  "groups": [
+    {
+      "tags": [],
+      "phrases": [
+        "held the line in spite of assault from multiple enemy vessels",
+        "was nearly sunk by enemy mortar fire"
+      ]
+    },
+    {
+      "tags": [["era", "new"], ["class", "light"]],
+      "phrases": [
+        "cunningly predicted an enemy submarine strike",
+        "made a daring fast assault on the enemy position"
+      ]
+    },
+    {
+      "tags": [["era", "new"], ["class", "heavy"]],
+      "phrases": [
+        "sunk [#2-6] enemy vessels",
+        "withstood severe torpedo fire from enemy submarines"
+      ]
+    },
+    {
+      "tags": [["class", "submarine"]],
+      "phrases": [
+        "managed a crippling torpedo strike against the enemy flagship",
+        "severely constrained enemy manoeuvering",
+        "provided vital early reconnaissance"
+      ]
+    },
+    {
+      "tags": [["speed", "fast"]],
+      "phrases": [
+        "was able to outrun her counterparts in the enemy fleet",
+        "arrived rapidly at the engagement zone, to great effect"
+      ]
+    }
+  ]
+}

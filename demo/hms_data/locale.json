@@ -1,0 +1,23 @@
+{
+  "name": "locale",
+  "groups": [
+    {
+      "tags": [["route", "argyria"]],
+      "phrases": [
+        "Argyria",
+        "Gloryport",
+        "Icegap",
+        "the frozen South"
+      ]
+    },
+    {
+      "tags": [["route", "tetotl"]],
+      "phrases": [
+        "Tetotl",
+        "High Gloriana",
+        "Las Cadres",
+        "the Colonies"
+      ]
+    }
+  ]
+}

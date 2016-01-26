@@ -1,0 +1,26 @@
+{
+  "name": "when",
+  "groups": [
+    {
+      "tags": [
+        ["era", "old"],
+        ["propulsion", "sail"]
+      ],
+      "phrases": [
+        "[#10-30] years ago",
+        "during the reign of the previous Emperor"
+      ]
+    },
+    {
+      "tags": [
+        ["era", "new"],
+        ["propulsion", "engine"]
+      ],
+      "phrases": [
+        "[#2-8] years ago",
+        "during the reign of the young Empress",
+        "last year"
+      ]
+    }
+  ]
+}
