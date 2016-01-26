@@ -87,5 +87,15 @@ describe('template', function () {
       template(text, model, cb).should.equal('dog');
     });
 
+    it('keeps the model going through callback recursions', function () {
+      const text = '[:foo]';
+      const cb = function (text) {
+        if (text === 'foo') return '[:bar]';
+        return '[animal]';
+      };
+
+      template(text, model, cb).should.equal('dog');
+    });
+
   });
 });
