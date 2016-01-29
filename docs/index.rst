@@ -15,6 +15,7 @@ Contents:
    usage
    api
    filters
+   templating
    glossary
 
 

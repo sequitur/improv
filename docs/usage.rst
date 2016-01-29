@@ -11,7 +11,7 @@ Improv is an npm module, meant to be used both on Node.js and on browser environ
 Quick Example
 -------------
 
-  A brief usage example::
+A brief usage example::
 
   const Improv = require('improv'); // import Improv from 'improv';
 
@@ -58,11 +58,11 @@ Quick Example
 
 This script, when run, should produce something like:
 
-  Bob: I have a dog who is 6 years old.
-  Alice: I have a cat who is 4 years old.
-  Carol: I have a parrot who is 7 years old.
+  | Bob: I have a dog who is 6 years old.
+  | Alice: I have a cat who is 4 years old.
+  | Carol: I have a parrot who is 7 years old.
 
-The output isn't completely random; it obeys certain rules. Alice always has a dog or a cat; Carol always has a parrot. Bob might have either animal. This is simplistic, but this model can be composed to express fairly complex rules.
+The output isn't completely random; it obeys certain rules. Alice always has a dog or a cat; Carol always has a parrot. Bob might have either animal. This is simplistic, but this type of world model can be composed to express fairly complex rules.
 
 This example be found in the improv source distribution, under ``demo/pets.js``. Another, more elaborate example is also included, ``demo/hms.js``. You can build both demos by doing ``gulp demo`` from the root folder of the source distribution; this should transpile them and make it possible to run them by doing ``node demo_build/pets.js``.
 
