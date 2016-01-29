@@ -16,7 +16,11 @@ describe('improv', function () {
     }
   };
 
-  const testImprov = new Improv(testSnippet);
+  let testImprov;
+
+  beforeEach(function () {
+    testImprov = new Improv(testSnippet);
+  });
 
   before(function () {
     /*
@@ -170,6 +174,22 @@ describe('improv', function () {
   describe('gen', function () {
     it('generates a random phrase after applying all filters', function () {
       (testImprov.gen('test-snippet', {})).should.equal('cat');
+    });
+  });
+
+  describe('auditing', function () {
+
+    it('returns a map of used phrases', function () {
+      const auditImprov = new Improv(testSnippet, { audit: true });
+      auditImprov.gen('test-snippet');
+      auditImprov.gen('test-snippet');
+      auditImprov.gen('test-snippet');
+      const result = auditImprov.phraseAudit;
+
+      result.should.not.be.undefined();
+      result.should.be.instanceOf(Map);
+      result.get('test-snippet').get('cat').should.equal(3);
+      result.get('test-snippet').get('pig').should.equal(0);
     });
   });
 

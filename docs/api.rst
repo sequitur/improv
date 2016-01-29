@@ -39,7 +39,8 @@ The options object defines the behavior of the generator. The default options ar
     filters: [],
     reincorporate: false,
     persistence: true,
-    salienceFormula: function (a) { return a; }
+    salienceFormula: function (a) { return a; },
+    audit: false
   }
 
 Filters
@@ -65,6 +66,19 @@ Salience formula
 The ``salienceFormula`` option (default: identity function) is a callback that is used to calculate the salience threshold. After Improv applies filters and removes inappropriate phrases from the list of potential phrases, it then calculates the maximum salience score among possible phrases. This value is passed to ``salienceFormula``, and the return value from that function is used as the salience threshold. Improv will only use phrases with a salience score equal to or greater than the salience threshold.
 
 What this means is that, by default, Improv will use only the phrases that score highest on salience, as given by the filters that it applied. Using a different formula allows for fuzzier ranking of phrases, or simply slightly more randomness in Improv's phrase choice.
+
+Auditing
+........
+
+The ``audit`` option (default: false) sets whether or not to turn on audit logging for this generator. Audit logging is done without any regard for memory or processing efficiency; it's meant as a tool to help you find "lumps" in your generator corpora (ie, things that come up too often or too rarely, biases and so on) and so it slows things down significantly.
+
+Currently, the following audit data is available:
+
+.. js:attribute:: Improv.prototype.phraseAudit
+
+A property of generator objects with audit turned on. The phrase audit is a Map object where the keys are strings (snippet names) and the values are themselves Maps. Each inner map has a key for each phrase that is a valid result for the snippet, and a value of an integer that corresponds to how often this phrase was used. This map is supposed to be comprehensive, meaning that phrases that don't show up at all will be there, with a value of zero.
+
+This tally is run regardless of history saving. The intention is that you can run your generator thousands of times then dump this map data to whatever data format you prefer and look at the aggregate results to see if there are phrases that are never being used (because their salience is always too low), phrases that come up disproportionately often, and so on.
 
 Methods
 -------
