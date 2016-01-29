@@ -38,6 +38,14 @@ describe('improv', function () {
     model.tags.should.eql([]);
   });
 
+  it('throws an error if an unknown snippet is to be generated', function () {
+    const badFunc = function () {
+      testImprov.gen('foo', {});
+    };
+
+    badFunc.should.throw(Error);
+  });
+
   describe('applyFilters', function () {
 
     it('produces a scored list of groups', function () {
