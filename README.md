@@ -1,6 +1,7 @@
 # Improv
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status](https://david-dm.org/sequitur/improv.svg)](https://david-dm.org/sequitur/improv)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status](https://david-dm.org/sequitur/improv.svg)](https://david-dm.org/sequitur/improv)[![Documentation Status](https://readthedocs.org/projects/improv/badge/?version=latest)](http://improv.readthedocs.org/en/latest/?badge=latest)
+
 
 A model-backed generative text grammar tool for javascript. Improv is similar to Tracery in that it can generate random, procedurally generated text recursively. Also like Tracery, Improv includes some basic templating functionality.
 
