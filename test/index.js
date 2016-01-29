@@ -6,7 +6,7 @@ import simple from 'simple-mock';
 
 describe('improv', function () {
 
-  const testImprov = new Improv({
+  const testSnippet = {
     'test-snippet': {
       groups: [
         {
@@ -14,7 +14,9 @@ describe('improv', function () {
         }
       ]
     }
-  });
+  };
+
+  const testImprov = new Improv(testSnippet);
 
   before(function () {
     /*
@@ -28,6 +30,12 @@ describe('improv', function () {
 
   it('creates an Improv object', function () {
     testImprov.should.be.instanceOf(Improv);
+  });
+
+  it('ensures model has tags', function () {
+    const model = {};
+    testImprov.gen('test-snippet', model);
+    model.tags.should.eql([]);
   });
 
   describe('applyFilters', function () {
@@ -325,6 +333,15 @@ describe('salience filtering', function () {
 });
 
 describe('filtering API', function () {
+
+  before(function () {
+    simple.mock(Math, 'random', () => 0);
+  });
+
+  after(function () {
+    simple.restore();
+  });
+
   it('gives filters access to model, a group, and the generator', function () {
     let results;
     const myFilter = function (group, model) {
@@ -355,6 +372,34 @@ describe('filtering API', function () {
     results.model.should.equal(model);
     results.thisObj.should.equal(customFilter);
   });
+
+  it('allows setting the salience formula', function () {
+    const spec = {
+      root: {
+        groups: [
+          {
+            tags: [['used']],
+            phrases: ['foo']
+          },
+          {
+            tags: [['unused']],
+            phrases: ['bar']
+          }
+        ]
+      }
+    };
+
+    const customFilter = new Improv(spec, {
+      filters: [Improv.filters.unmentioned()],
+      salienceFormula: () => 0
+    });
+
+    const model = {};
+
+    customFilter.gen('root', model).should.equal('foo');
+    customFilter.gen('root', model).should.equal('foo');
+  });
+
 });
 
 describe('history and DRYness', function () {
