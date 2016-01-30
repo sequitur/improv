@@ -13,6 +13,18 @@ describe('improv', function () {
           phrases: ['dog', 'cat', 'pig']
         }
       ]
+    },
+    'binding-snippet': {
+      bind: true,
+      groups: [
+        {
+          phrases: ['glue', 'cement', 'binder']
+        }
+      ]
+    },
+    'recur-binding': {
+      bind: true,
+      groups: [{ phrases: ['[:binding-snippet]'] }]
     }
   };
 
@@ -174,6 +186,27 @@ describe('improv', function () {
   describe('gen', function () {
     it('generates a random phrase after applying all filters', function () {
       (testImprov.gen('test-snippet', {})).should.equal('cat');
+    });
+
+    it('binds values to models', function () {
+      const model = {};
+      const result = testImprov.gen('binding-snippet', model);
+
+      result.should.equal(model.bindings['binding-snippet']);
+    });
+
+    it('reuses the bound value', function () {
+      const model = { bindings: { 'binding-snippet': 'paste' } };
+      testImprov.gen('binding-snippet', model)
+        .should.equal(testImprov.gen('binding-snippet', model))
+        .and.equal('paste');
+    });
+
+    it('works recursively', function () {
+      const model = {};
+      testImprov.gen('recur-binding', model);
+      model.bindings['recur-binding']
+        .should.equal(model.bindings['binding-snippet']);
     });
   });
 
