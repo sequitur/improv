@@ -77,7 +77,8 @@
             "call"
           ]
         }
-      ]
+      ],
+      "linebreak-style": 0
     }
   },
   "repository": "sequitur/improv",
