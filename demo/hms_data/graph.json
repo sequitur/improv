@@ -1,5 +1,6 @@
 {
   "name": "graph",
+  "bind": "true",
   "phrases": [
     "[:statement] [:statement] [:statement] [:statement]"
   ]

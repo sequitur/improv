@@ -36,18 +36,11 @@ const shipMate = new Improv(loadSpec(), {
 });
 
 function newModel () {
-  const model = {
-    get gengraph () {
-      /*
-        A hack that means the initial intro sentence doesn't count as
-        "mentioning" a tag.
-      */
-      shipMate.clearTagHistory();
-      return '[:graph]';
-    },
-    tags: []
-  };
-  model.name = shipMate.gen('name', model);
+  const model = {};
+  // We generate the paragraph first so biases in the name corpus don't overly
+  // affect ship characteristics.
+  shipMate.gen('class', model);
+  shipMate.gen('graph', model);
   return model;
 }
 

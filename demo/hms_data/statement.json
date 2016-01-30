@@ -62,7 +62,7 @@
       ]
     },
     {
-      "tags": [["class", "battleship"]],
+      "tags": [["class", "heavy", "battleship"]],
       "phrases": ["She served as the flagship of the Second Fleet during the [:battle]."]
     },
     {
@@ -160,8 +160,8 @@
         ["class", "light", "frigate"]
       ],
       "phrases": [
-        "Frigates like the [name] are commonly used to harass enemy shipping.",
-        "The [name], like other frigates, is one of the smaller combat warships in the fleet."
+        "Frigates like the [:name] are commonly used to harass enemy shipping.",
+        "The [:name], like other frigates, is one of the smaller combat warships in the fleet."
       ]
     },
     {
@@ -169,21 +169,23 @@
         ["class", "light", "corvette"]
       ],
       "phrases": [
-        "A corvette like the [name] is primarily concerned with minor engagements."
+        "A corvette like the [:name] is primarily concerned with minor engagements."
       ]
     },
     {
       "tags": [
         ["class", "submarine"],
+        ["era", "new"],
         ["crew"]
       ],
       "phrases": [
-        "Submarines like the [name] are often crewed by small, wiry men who do well in tight spaces."
+        "Submarines like the [:name] are often crewed by small, wiry men who do well in tight spaces."
       ]
     },
     {
       "tags": [
         ["class", "submarine"],
+        ["era", "new"],
         ["history"]
       ],
       "phrases": [
@@ -193,10 +195,11 @@
     {
       "tags": [
         ["propulsion", "sail"],
-        ["history"]
+        ["history"],
+        ["era", "old"]
       ],
       "phrases": [
-        "Sailing vessels like the [name] were common, up until companies like Voulger Dynamics began bringing oil and voltaic engines to seafaring ships."
+        "Sailing vessels like the [:name] were common, up until companies like Voulger Dynamics began bringing oil and voltaic engines to seafaring ships."
       ]
     },
     {
@@ -206,8 +209,8 @@
         ["status", "warship"]
       ],
       "phrases": [
-        "The [name] is one of the new generation of vessels built to fight against the Arkodian fleet in the Short War.",
-        "The [name] incorporates technologies developed to counteract Arkodian naval power."
+        "The [:name] is one of the new generation of vessels built to fight against the Arkodian fleet in the Short War.",
+        "The [:name] incorporates technologies developed to counteract Arkodian naval power."
       ]
     },
     {
@@ -227,7 +230,7 @@
         ["era", "old"]
       ],
       "phrases": [
-        "In her day, the [name] carried [#12-46] guns to a broadside, plus mortars and swivels."
+        "In her day, the [:name] carried [#12-46] guns to a broadside, plus mortars and swivels."
       ]
     }
   ]

@@ -1,5 +1,6 @@
 {
   "name": "name",
+  "bind": true,
   "groups": [
     {
       "note": "Variants of 'brave'",
@@ -40,7 +41,8 @@
     {
       "note": "Freigher names",
       "tags": [
-        ["class", "freight"]
+        ["class", "freight"],
+        ["role", "transport"]
       ],
       "phrases": [
         "Hind",
@@ -52,7 +54,7 @@
       ]
     },
     {
-      "tags": [["class", "submarine"], ["status", "warship"]],
+      "tags": [["class", "submarine"], ["status", "warship"], ["era", "new"]],
       "phrases": [
         "Silent",
         "Assassin",

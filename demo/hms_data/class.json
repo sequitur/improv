@@ -1,5 +1,6 @@
 {
   "name": "class",
+  "bind": true,
   "groups": [
     {
       "tags": [
