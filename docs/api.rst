@@ -30,6 +30,13 @@ The spec is a plain javascript object that defines all of the snippets that the 
 
 That is, a plain object with keys corresponding to the names of snippets and values corresponding to snippet objects. Each snippet object has one property, ``groups``, which itself is an array of group objects. Group objects have two properties, ``tags``(an array of arrays, where each array is an individual tag) and ``phrases`` (an array of strings, with each string being a potential phrase that the snippet can produce).
 
+Binding
+.......
+
+Optionally, a snippet object can have it's ``bind`` property set to ``true``. When the generator is run, that snippet will be chosen randomly only the first time it is called; afterwards, the output of that snippet (including any template directives) will be resolved and "frozen." This is useful, for instance, if you want the name of something to be consistent in the text but you're not sure when or where that name will show up first and have to be generated.
+
+Note that binding is done *per model*; bindings are added to the model as properties of a ``bindings`` object.
+
 Options
 :::::::
 
@@ -88,7 +95,7 @@ Methods
   :param string snippet: The name of the snippet to be generated.
   :param object model: A model object.
 
-Generates text according to a given snippet.
+Generates text according to a given snippet. Returns the generated text. Note that this is **not** a pure function; it can mutate the model object, attaching bindings to it and tags (if reincorporation is turned on).
 
 .. js:function:: Improv#clearHistory()
 
