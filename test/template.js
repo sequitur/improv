@@ -98,4 +98,34 @@ describe('template', function () {
     });
 
   });
+
+  describe('chained directives', function () {
+    const model = {
+      myFunc (text) {
+        return `!!${text}!!`;
+      },
+
+      foo: 'foo'
+    };
+
+    it('takes the rightmost directive as a function', function () {
+      template('[myFunc foo]', model).should.equal('!!foo!!');
+    });
+
+    it('allows recursion', function () {
+      template('[myFunc myFunc foo]', model).should.equal('!!!!foo!!!!');
+    });
+
+    it('allows literals', function () {
+      template('[myFunc \'bar\']', model).should.equal('!!bar!!');
+    });
+
+    it('has builtins', function () {
+      template('[a \'dog\']', model).should.equal('a dog');
+      template('[a \'ant\']', model).should.equal('an ant');
+      template('[A \'dog\']', model).should.equal('A dog');
+      template('[An \'dog\']', model).should.equal('A dog');
+      template('[cap \'foo\']', model).should.equal('Foo');
+    });
+  });
 });
