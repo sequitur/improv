@@ -69,7 +69,8 @@ describe('improv', function () {
         .should.deepEqual([
           {
             group: {
-              phrases: ['dog', 'cat', 'pig']
+              phrases: ['dog', 'cat', 'pig'],
+              tags: []
             },
             score: 0
           }
@@ -254,6 +255,13 @@ describe('with filters', function () {
         }
 
       ]
+    },
+    badSnippet: {
+      groups: [
+        {
+          phrases: ['foo']
+        }
+      ]
     }
   };
   describe('with mismatch filter', function () {
@@ -275,6 +283,16 @@ describe('with filters', function () {
 
       wMismatch.gen('pet', model1).should.equal('dog');
       wMismatch.gen('pet', model2).should.equal('cat');
+    });
+
+    it('treats no tag property as empty tags', function () {
+      let result;
+      const cb = function () {
+        result = wMismatch.gen('badSnippet');
+      };
+
+      cb.should.not.throwError();
+      result.should.equal('foo');
     });
 
   });
