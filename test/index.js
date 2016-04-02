@@ -209,6 +209,15 @@ describe('improv', function () {
       model.bindings['recur-binding']
         .should.equal(model.bindings['binding-snippet']);
     });
+
+    it('throws an error if a snippet does not exist', function () {
+      const model = {};
+      const f = function () { testImprov.gen('missing-snippet', model); };
+
+      f.should.throw();
+
+    });
+
   });
 
   describe('auditing', function () {
