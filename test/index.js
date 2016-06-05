@@ -337,6 +337,55 @@ describe('with filters', function () {
 
   });
 
+  describe('structured search', function () {
+    const spec = {
+      root: {
+        groups: [
+          {
+            phrases: ['[:phrase], [|mood|bright:phrase], [:phrase]']
+          }
+        ]
+      },
+      phrase: {
+        groups: [
+          {
+            tags: [['mood', 'dark']],
+            phrases: ['dark phrase']
+          },
+          {
+            tags: [['mood', 'bright']],
+            phrases: ['bright phrase']
+          }
+        ]
+      }
+    };
+
+    const generator = new Improv(spec, {
+      filters: [
+        Improv.filters.mismatchFilter()
+      ],
+      reincorporate: true
+    });
+
+    const modelOne = {
+      tags: [
+        ['mood', 'dark']
+      ]
+    };
+
+    const modelTwo = {};
+
+    it('uses the provided tags', function () {
+      generator.gen('root', modelOne).should
+        .equal('dark phrase, bright phrase, dark phrase');
+    });
+
+    it('does not mutate the model', function () {
+      generator.gen('root', modelTwo).should
+        .match(/(bright|dark) phrase, bright phrase, \1 phrase/);
+    });
+  });
+
 });
 
 describe('reincorporation', function () {
