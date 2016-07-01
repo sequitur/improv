@@ -322,10 +322,21 @@ describe('with filters', function () {
             phrases: ['cat', 'dog', 'parakeet']
           }
         ]
+      },
+      loud: {
+        groups: [
+          {
+            phrases: ['[upcap :pet]']
+          }
+        ]
       }
     };
 
-    const generator = new Improv(spec);
+    const generator = new Improv(spec, {
+      builtins: {
+        upcap (str) { return str.toUpperCase(); }
+      }
+    });
 
     const model = { name: 'Bob' };
 
@@ -333,6 +344,12 @@ describe('with filters', function () {
       generator.gen('root', model).should.match(
         /Hi, my name is Bob, and I own [0-9]+ (cat|dog|parakeet)s./);
 
+    });
+
+    it('uses templating builtins', function () {
+      generator.gen('loud', model).should.match(
+        /(CAT|DOG|PARAKEET)/
+      );
     });
 
   });

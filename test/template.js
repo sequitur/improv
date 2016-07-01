@@ -128,4 +128,5 @@ describe('template', function () {
       template('[cap \'foo\']', model).should.equal('Foo');
     });
   });
+
 });

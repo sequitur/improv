@@ -16,7 +16,9 @@
     "babel-core": "^5.5.0",
     "babel-eslint": "^4.1.6",
     "del": "^2.0.2",
-    "eslint-config-xo-space": "^0.7.0",
+    "eslint": "^2.13.1",
+    "eslint-config-xo": "^0.15.2",
+    "eslint-config-xo-space": "^0.14.0",
     "eslint-plugin-babel": "^3.0.0",
     "fs-jetpack": "^0.7.1",
     "gulp": "^3.9.0",
@@ -75,7 +77,9 @@
           ]
         }
       ],
-      "linebreak-style": 0
+      "linebreak-style": 0,
+      "max-statements-per-line": 0,
+      "max-lines": 0
     }
   },
   "repository": "sequitur/improv",
