@@ -329,6 +329,13 @@ describe('with filters', function () {
             phrases: ['[upcap :pet]']
           }
         ]
+      },
+      fails: {
+        groups: [
+          {
+            phrases: ['[fails :pet]']
+          }
+        ]
       }
     };
 
@@ -350,6 +357,14 @@ describe('with filters', function () {
       generator.gen('loud', model).should.match(
         /(CAT|DOG|PARAKEET)/
       );
+    });
+
+    it('gives useful errors', function () {
+      function failer () {
+        generator.gen('fails');
+      }
+      failer.should
+        .throwError('Builtin or model property "fails" is not a function.');
     });
 
   });
