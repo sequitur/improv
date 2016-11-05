@@ -79,6 +79,45 @@ describe('improv', function () {
 
   });
 
+  describe('rng', function () {
+    it('allows supplying a custom RNG', function () {
+      const snippets = {
+        example: {
+          groups: [
+            {
+              tags: [],
+              phrases: [
+                'foo',
+                'bar',
+                'baz',
+                'quux'
+              ]
+            }
+          ]
+        },
+        num: {
+          groups: [
+            {
+              tags: [],
+              phrases: ['[#1-20]']
+            }
+          ]
+        }
+      };
+
+      const rng0 = function () { return 0; };
+      const rng1 = function () { return 0.9999999; };
+
+      const improv0 = new Improv(snippets, { rng: rng0 });
+      const improv1 = new Improv(snippets, { rng: rng1 });
+
+      improv0.gen('example').should.equal('foo');
+      improv0.gen('num').should.equal('1');
+      improv1.gen('example').should.equal('quux');
+      improv1.gen('num').should.equal('20');
+    });
+  });
+
   describe('flattenGroups', function () {
 
     it('flattens a scored list of groups into a tuple with tags', function () {

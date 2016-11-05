@@ -68,8 +68,8 @@ describe('template', function () {
         expectedValue = 0;
         template(text).should.equal('1');
         expectedValue = 0.5;
-        template(text).should.equal('10');
-        expectedValue = 1;
+        template(text).should.equal('11');
+        expectedValue = 0.999;
         template(text).should.equal('20');
       });
     });

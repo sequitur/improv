@@ -87,6 +87,13 @@ A property of generator objects with audit turned on. The phrase audit is a Map 
 
 This tally is run regardless of history saving. The intention is that you can run your generator thousands of times then dump this map data to whatever data format you prefer and look at the aggregate results to see if there are phrases that are never being used (because their salience is always too low), phrases that come up disproportionately often, and so on.
 
+Using a custom RNG
+....................
+
+The ``rng`` option (default: undefined) allows for supplying a custom random number generator, for instance if you want to use a seeded generator or if, for some deranged reason, you want your random text generated with cryptographically secure pseudorandom numbers.
+
+The rng should be a function that supplies the same interface as Math.random(), that is, it should return a floating-point number between 0 (inclusive) and 1 (exclusive). When the generator object is created, the function is bound to it, so inside the rng function, ``this`` refers to the generator itself.
+
 Methods
 -------
 

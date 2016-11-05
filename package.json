@@ -1,6 +1,6 @@
 {
   "name": "improv",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A model-backed generative text grammar tool for javascript",
   "homepage": "",
   "author": {
@@ -16,7 +16,7 @@
     "babel-core": "^5.5.0",
     "babel-eslint": "^4.1.6",
     "del": "^2.0.2",
-    "eslint": "^2.13.1",
+    "eslint": "^3.9.1",
     "eslint-config-xo": "^0.15.2",
     "eslint-config-xo-space": "^0.14.0",
     "eslint-plugin-babel": "^3.0.0",
