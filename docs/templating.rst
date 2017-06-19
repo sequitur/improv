@@ -7,7 +7,7 @@ Improv includes some basic templating functionality. For the most part, this is
 used so that snippets can be nested, allowing one phrase to include the output
 from a different snippet.
 
-..warning Improv's templating engine is very simple, and it doesn't do any sort
+.. warning:: Improv's templating engine is very simple, and it doesn't do any sort
 of validation or checking. As a result, do not pass "dirty" user-submitted data
 into Improv; there is not guarantee that this is safe.
 
