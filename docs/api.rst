@@ -100,12 +100,12 @@ The rng should be a function that supplies the same interface as Math.random(), 
 Builtins
 ........
 
-See the section on templating_.
+See the section on :ref:`templating`.
 
 Submodeler
 ..........
 
-See the section on submodels_.
+See the section on :ref:`submodels`.
 
 Methods
 -------

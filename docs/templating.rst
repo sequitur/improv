@@ -97,7 +97,7 @@ take "a."
 You can add your own builtins to a generator by specifying the ``builtins`` property in
 the generator options, as an object. For example::
 
-	const generator = new Improv(snippetData, {
+  const generator = new Improv(snippetData, {
     builtins: {
     upcap (str) { return str.toUpperCase(); }
     }
