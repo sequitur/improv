@@ -47,7 +47,10 @@ The options object defines the behavior of the generator. The default options ar
     reincorporate: false,
     persistence: true,
     salienceFormula: function (a) { return a; },
-    audit: false
+    audit: false,
+    rng: undefined,
+    builtins: {},
+    submodeler: function () { return {}; }
   }
 
 Filters
@@ -93,6 +96,16 @@ Using a custom RNG
 The ``rng`` option (default: undefined) allows for supplying a custom random number generator, for instance if you want to use a seeded generator or if, for some deranged reason, you want your random text generated with cryptographically secure pseudorandom numbers.
 
 The rng should be a function that supplies the same interface as Math.random(), that is, it should return a floating-point number between 0 (inclusive) and 1 (exclusive). When the generator object is created, the function is bound to it, so inside the rng function, ``this`` refers to the generator itself.
+
+Builtins
+........
+
+See the section on templating_.
+
+Submodeler
+..........
+
+See the section on submodels_.
 
 Methods
 -------

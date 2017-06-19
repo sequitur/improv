@@ -93,3 +93,14 @@ Note that the algorithm currently used to produce a/an is fairly naive, and
 doesn't take into consideration most corner cases; it assumes that words
 starting in a, e, i, or o all take "an", while words starting in other letters
 take "a."
+
+You can add your own builtins to a generator by specifying the ``builtins`` property in
+the generator options, as an object. For example::
+
+	const generator = new Improv(snippetData, {
+    builtins: {
+    upcap (str) { return str.toUpperCase(); }
+    }
+  });
+
+Will allow you to call ``upcap`` as a built-in function from within templates.

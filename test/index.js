@@ -747,3 +747,121 @@ describe('history and DRYness', function () {
     });
   });
 });
+
+describe('submodels', function () {
+  const spec = {
+    eyecolor: {
+      bind: true,
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            'blue',
+            'black',
+            'brown',
+          ]
+        }
+      ]
+    },
+    occupation: {
+      bind: true,
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            'lawyer',
+            'thief',
+            'hunter'
+          ]
+        }
+      ]
+    },
+    person_desc: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[:occupation] with [:eyecolor] eyes'
+          ]
+        }
+      ]
+    },
+    main_phrase: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[a >person1:person_desc];[a >person2:person_desc]'
+          ]
+        }
+      ]
+    },
+    person1: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[a >person1:person_desc]'
+          ]
+        }
+      ]
+    },
+    person2: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[a >person2:person_desc]'
+          ]
+        }
+      ]
+    },
+    person_proptest: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[>person2:proptest]'
+          ]
+        }
+      ]
+    },
+    proptest: {
+      groups: [
+        {
+          tags: [],
+          phrases: [
+            '[prop]'
+          ]
+        }
+      ]
+    }
+  };
+
+  let g;
+
+  beforeEach(function () {
+    g = new Improv(spec, {
+      submodeler () {
+        return {
+          prop: 'foo'
+        }
+      }
+    });
+  });
+
+  it('uses submodels', function () {
+    const model = {};
+    const [a, b] = g.gen('main_phrase', model).split(';');
+    a.should.match(/(lawyer|thief|hunter) with (blue|black|brown) eyes/);
+    a.should.equal(g.gen('person1', model));
+    b.should.equal(g.gen('person2', model));
+  });
+
+  it ('uses the submodeler function', function () {
+    const model = {};
+    g.gen('person_proptest', model).should.equal('foo');
+  })
+});
+
+// TODO: Test and document the "forced tag" functionality.

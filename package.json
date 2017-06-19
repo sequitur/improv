@@ -13,6 +13,7 @@
   ],
   "main": "dist/index.js",
   "devDependencies": {
+    "async": "^2.4.1",
     "babel-core": "^5.5.0",
     "babel-eslint": "^4.1.6",
     "del": "^2.0.2",
@@ -21,7 +22,7 @@
     "eslint-config-xo-space": "^0.14.0",
     "eslint-plugin-babel": "^3.0.0",
     "fs-jetpack": "^0.7.1",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-babel": "^5.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
@@ -89,6 +90,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.0.1"
+    "amdefine": "^1.0.1",
+    "lodash": "^4.0.1",
+    "nopt": "^4.0.1"
   }
 }
