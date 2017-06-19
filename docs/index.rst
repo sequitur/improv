@@ -16,6 +16,7 @@ Contents:
    api
    filters
    templating
+   submodels
    glossary
 
 
