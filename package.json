@@ -22,7 +22,7 @@
     "eslint-config-xo-space": "^0.14.0",
     "eslint-plugin-babel": "^3.0.0",
     "fs-jetpack": "^0.7.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0",
     "gulp-babel": "^5.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
@@ -86,7 +86,8 @@
   "repository": "sequitur/improv",
   "scripts": {
     "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "gulp",
+    "demo": "gulp demo"
   },
   "license": "MIT",
   "dependencies": {

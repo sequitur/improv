@@ -29,7 +29,7 @@ gulp.task('pre-test', function () {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
+gulp.task('test', gulp.series('pre-test', function (cb) {
   let mochaErr;
 
   gulp.src('test/**/*.js')
@@ -42,21 +42,21 @@ gulp.task('test', ['pre-test'], function (cb) {
     .on('end', function () {
       cb(mochaErr);
     });
-});
+}));
 
 gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
 
-gulp.task('babel', ['clean'], function () {
-  return gulp.src('lib/**/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('clean', function () {
   return del(['dist', 'demo_build']);
 });
+
+gulp.task('babel', gulp.series('clean', function () {
+  return gulp.src('lib/**/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('dist'));
+}));
 
 gulp.task('build-demo', function () {
   return gulp.src('demo/**/*.js')
@@ -79,6 +79,6 @@ gulp.task('watch-demo', function () {
   gulp.watch(['demo/**/*.json'], ['json-demo']);
 });
 
-gulp.task('demo', ['build-demo', 'lib-demo', 'json-demo']);
-gulp.task('prepublish', ['nsp', 'babel']);
-gulp.task('default', ['test']);
+gulp.task('demo', gulp.series('build-demo', 'lib-demo', 'json-demo'));
+gulp.task('prepublish', gulp.series('nsp', 'babel'));
+gulp.task('default', gulp.series('test'));
